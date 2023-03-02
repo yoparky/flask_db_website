@@ -4,7 +4,7 @@ from flask_mysqldb import MySQL
 
 def create_app():
     app = Flask(__name__)
-    # Shouldn't share this
+    # Shouldn't share this, just a random string to keep things secure
     app.config['SECRET_KEY'] = 'asklnvkxqoznmcvoqe'
     # app.config['MYSQL_HOST'] = 'classmysql.engr.oregonstate.edu'
     # app.config['MYSQL_USER'] = 'cs340_username'

@@ -10,6 +10,12 @@ db_connection = db.connect_to_database()
 def home():
     return render_template("home.html")
 
+@views.route('/reset_db')
+def reset_db():
+    query = "DELETE FROM Employees WHERE id = '%s';"
+    db.execute_query(db_connection=db_connection, query=query)
+    return redirect("/employees")
+
 @views.route('/employees', methods=["POST", "GET"])
 def employees():
     if request.method == "POST":
@@ -97,7 +103,7 @@ def edit_employee_id(id):
     # a potential query2 that populates the dropdown etc.
     return render_template("edit/edit_employee.html", employees=result)
 
-# TODO FROM HERE DOWN.
+# TODO NEED TO IMPLEMENT FROM HERE DOWN.
 
 @views.route('/customers', methods=["POST", "GET"])
 def customers():
