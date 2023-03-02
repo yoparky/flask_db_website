@@ -3,6 +3,8 @@ from flask import Blueprint, redirect, render_template, flash, request
 from .database import db_connector as db
 from .database import db_reset
 
+#TODO: Handle all edge cases where table has 0 entries in Jinja
+
 # All views here
 views = Blueprint('views', __name__)
 # connect to database
