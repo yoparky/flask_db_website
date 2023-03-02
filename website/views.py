@@ -1,5 +1,7 @@
-from flask import Blueprint, redirect, render_template, json, flash, request
+import time
+from flask import Blueprint, redirect, render_template, flash, request
 from .database import db_connector as db
+from .database import db_reset
 
 # All views here
 views = Blueprint('views', __name__)
@@ -10,11 +12,15 @@ db_connection = db.connect_to_database()
 def home():
     return render_template("home.html")
 
-@views.route('/reset_db')
+@views.route('/reset_wait')
 def reset_db():
-    query = "DELETE FROM Employees WHERE id = '%s';"
-    db.execute_query(db_connection=db_connection, query=query)
-    return redirect("/employees")
+    return render_template('reset_wait.html')
+
+@views.route('/reset_db')
+def reset_wait():
+    for query in db_reset.reset_query:
+        db.execute_query(db_connection=db_connection, query=query)
+    return redirect('/')
 
 @views.route('/employees', methods=["POST", "GET"])
 def employees():
@@ -58,6 +64,7 @@ def employees():
 def delete_employee(id):
     query = "DELETE FROM Employees WHERE id = '%s';"
     db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
+    time.sleep(3)
     return redirect("/employees")
 
 @views.route('/edit_employee/<int:id>', methods=["POST", "GET"])

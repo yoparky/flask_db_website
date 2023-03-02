@@ -13,14 +13,17 @@
         column name -->
         <th><a href="#"></a></th> 
         <th><a href="#"></a></th> 
-        {% for key in employees[0].keys() %}
+        {% if employees|length > 0 %}
+            {% for key in employees[0].keys() %}
 
-        <!-- Create a <th> tag with the key inside of it, this will be
-        our header row -->
-        <th>{{ key }}</th>
+            <!-- Create a <th> tag with the key inside of it, this will be
+            our header row -->
+            <th>{{ key }}</th>
 
-        <!-- End of this for loop -->
-        {% endfor %}
+            <!-- End of this for loop -->
+            {% endfor %}
+        {% endif %}
+
     </tr>
     <tbody>
 
