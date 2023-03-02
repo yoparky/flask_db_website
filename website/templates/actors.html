@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<p><strong>Actors</strong></p>
+
+<table border="1" cellpadding="5"></tableborder>
+    <thead>
+    <tr>
+        <!-- Iterate through each key in the first entry to get the
+        column name -->
+        <th><a href="new/new_actor.html">New</a></th> <!-- TODO -->
+        <th><a href="new/new_actor.html">New</a></th> <!-- TODO -->
+        {% for key in actors[0].keys() %}
+
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+    <!-- Now, iterate through every person in bsg_people -->
+    {% for person in actors %}
+    <tr>
+        <td><a href="edit/edit_actor.html">Edit</a></td> <!-- TODO -->
+        <td><a href="delete/delete_actor.html">Delete</a></td> <!-- TODO -->
+        <!-- Then iterate through every key in the current person dictionary -->
+        {% for key in person.keys() %}
+        <!-- Create a <td> element with the value of that key in it -->
+        <td>{{person[key]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+
+
+{% endblock %}
