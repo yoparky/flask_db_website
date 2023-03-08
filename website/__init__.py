@@ -15,6 +15,20 @@ def create_app():
     # register views
     from .views import views
     app.register_blueprint(views, url_prefix='/')
+    from .views_employees import views_employees
+    app.register_blueprint(views_employees, url_prefix='/')
+    from .views_actors import views_actors
+    app.register_blueprint(views_actors, url_prefix='/')
+    from .views_customers import views_customers
+    app.register_blueprint(views_customers, url_prefix='/')
+    from .views_movies import views_movies
+    app.register_blueprint(views_movies, url_prefix='/')
+    from .views_order_items import views_order_items
+    app.register_blueprint(views_order_items, url_prefix='/')
+    from .views_orders import views_orders
+    app.register_blueprint(views_orders, url_prefix='/')
+    from .views_performances import views_performances
+    app.register_blueprint(views_performances, url_prefix='/')
 
     # Test access for development
     # DB login DELETE IN FINAL VERSION
