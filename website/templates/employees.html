@@ -27,11 +27,11 @@
     </tr>
     <tbody>
 
-    <!-- Now, iterate through every person in bsg_people -->
+    <!-- Now, iterate through every row -->
     {% for person in employees %}
     <tr>
-        <td><a href="edit_employee/{{person.id}}">Edit</a></td> <!-- TODO -->
-        <td><a href="delete_employee/{{person.id}}">Delete</a></td> <!-- TODO -->
+        <td><a href="edit_employee/{{person.id}}">Edit</a></td> 
+        <td><a href="delete_employee/{{person.id}}">Delete</a></td> 
         <!-- Then iterate through every key in the current person dictionary -->
         {% for key in person.keys() %}
         <!-- Create a <td> element with the value of that key in it -->
@@ -79,6 +79,6 @@
         <br />
         <br />
     </form>
-</div><!-- insert -->
+</div>
 
 {% endblock %}
