@@ -1,39 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<div id="update">
-    <form method="POST" id="">
-        <legend><strong>Update Customer</strong></legend>
+{% block title %} Edit Customer {% endblock %}
 
-        <fieldset class="fields">
-            <label> ID: </label> X
-            <br></br>
+{% block content %}
 
-            <label> first name </label> <input type="text" name="fname" value="">
-            <br></br>
+<p><strong>Edit Employee</strong></p>
 
-            <label> last name </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> street name </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> city name </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> state name </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> phone  </label> <input type="text" name="fname" value="">
-            <br></br>
+<table border="1" cellpadding="5"></tableborder>
+    <thead>
+    <tr>
+        <!-- Iterate through each key in the first entry to get the
+        column name -->
 
-            <input class="btn" type="submit" id="" value=" Update ">
-            <input class="btn" type="button" value="cancel"  >
+        {% for key in customers[0].keys() %}
+
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+    <!-- Now, iterate through every person in bsg_people -->
+    {% for person in customers %}
+    <tr>
+        <!-- Then iterate through every key in the current person dictionary -->
+        {% for key in person.keys() %}
+        <!-- Create a <td> element with the value of that key in it -->
+        <td>{{person[key]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br />
+{% endblock %}
+
+{% block form %}
+
+<!-- Form -->
+<!-- Maybe add a default value attribute -->
+<div id="container">
+    <form method="POST" id="New_Person">
+        <br />
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label for="strname">Street Name</label>
+            <input type="text" class="form-control" id="strname" name="strname" placeholder="Enter street">
+        </div>
+        <div class="form-group">
+            <label for="cityname">City Name</label>
+            <input type="text" class="form-control" id="cityname" name="cityname" placeholder="Enter city">
+        </div>
+        <div class="form-group">
+            <label for="stname">Street Name</label>
+            <input type="text" class="form-control" id="stname" name="stname" placeholder="Enter state">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter phone">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/customers">
+            <button type="button" class="btn btn-primary">Cancel</button>
+        </a>
+        <br />
+        <br />
     </form>
-</div><!-- update -->
+</div><!-- insert -->
 
-
-
-</body>
-</html>
+{% endblock %}

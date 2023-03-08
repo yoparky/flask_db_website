@@ -20,8 +20,6 @@ def customers():
 
     if request.method == "POST" :
 
-
-
         fname = request.form["fname"]
         lname = request.form["lname"]
         strname = request.form["strname"]
@@ -52,13 +50,11 @@ def customers():
             return redirect( "/customers" )
 
 
-@views_customers.route( "/edit_customer/<int:id>" , methods = [ "GET" , "POST" ] )
+@views_customers.route( "/delete_customer/<int:id>" , methods = [ "GET" , "POST" ] )
 def delete_cusmoter( id ) :
 
-    query = "DELETE FROM Customers WHERE customer_id = %s ; "
-    params = ( id , )
-
-    db.execute_query( db_connection = db_connection , query = query , query_params = params )
+    query = "DELETE FROM Customers WHERE id = '%s' ; "
+    db.execute_query( db_connection = db_connection , query = query , query_params = ( id , ) )
     time.sleep( 1 )
 
     return redirect( "/customers")
@@ -71,8 +67,8 @@ def edit_customer( id ) :
         query = "SELECT * FROM Customers WHERE id='%s';"
         cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
 
-        result = cursor.fetchall()
-        return render_template("edit/edit_customer.html", employees=result)
+        customers = cursor.fetchall()
+        return render_template("edit/edit_customer.html", customers=customers)
 
     if request.method == "POST" :
 
@@ -107,6 +103,7 @@ def edit_customer( id ) :
 
             return redirect('/customers')
 
+    return redirect('/customers')
 
 
 

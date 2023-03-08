@@ -28,8 +28,8 @@
     <!-- Now, iterate through every person in bsg_people -->
     {% for person in customers %}
     <tr>
-        <td><a href="edit/edit_customer.html">Edit</a></td> <!-- TODO -->
-        <td><a href="delete/delete_customer.html">Delete</a></td> <!-- TODO -->
+        <td><a href="/edit_customer/{{ person.id }}">Edit</a></td> <!-- TODO -->
+        <td><a href="/delete_customer/{{ person.id }}">Delete</a></td> <!-- TODO -->
         <!-- Then iterate through every key in the current person dictionary -->
         {% for key in person.keys() %}
         <!-- Create a <td> element with the value of that key in it -->
