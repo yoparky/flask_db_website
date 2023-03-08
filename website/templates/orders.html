@@ -11,31 +11,80 @@
   <tr>
       <!-- Iterate through each key in the first entry to get the
       column name -->
-      <th><a href="new/new_order.html">New</a></th> <!-- TODO -->
-      <th><a href="new/new_order.html">New</a></th> <!-- TODO -->
-      {% for key in orders[0].keys() %}
+      <th><a href="#"></a></th> 
+      <th><a href="#"></a></th> 
+      {% if orders|length > 0 %}
+        {% for key in orders[0].keys() %}
 
-      <!-- Create a <th> tag with the key inside of it, this will be
-      our header row -->
-      <th>{{ key }}</th>
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
 
-      <!-- End of this for loop -->
-      {% endfor %}
+        <!-- End of this for loop -->
+        {% endfor %}
+      {% endif %}
   </tr>
   <tbody>
 
   <!-- Now, iterate through every person in bsg_people -->
-  {% for person in orders %}
+  {% for item in orders %}
   <tr>
-      <td><a href="edit/edit_order.html">Edit</a></td> <!-- TODO -->
-      <td><a href="delete/delete_order.html">Delete</a></td> <!-- TODO -->
+    <td><a href="edit_order/{{item.order_id}}">Edit</a></td> 
+    <td><a href="delete_order/{{item.order_id}}">Delete</a></td> 
       <!-- Then iterate through every key in the current person dictionary -->
-      {% for key in person.keys() %}
+      {% for key in item.keys() %}
       <!-- Create a <td> element with the value of that key in it -->
-      <td>{{person[key]}}</td>
+      <td>{{item[key]}}</td>
       {% endfor %}
   </tr>
   {% endfor %}
   </table>
+  <br />
+{% endblock %}
+
+
+{% block form %}
+
+<!-- Form -->
+<div id="container">
+    <form method="POST" id="new_order">
+        <br />
+        <p><strong>Add Order</strong></p>
+        <div class="form-group">
+          <label for="employee_selection">Select Employee</label>
+          <select name="employee_selection" form="new_order">
+            {% for item in dropdown_employee %}
+              <option value="{{item['id']}}">{{item['first']}} {{item['last']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="customer_selection">Select Customer</label>
+          <select name="customer_selection" form="new_order">
+            {% for item in dropdown_customer %}
+              <option value="{{item['id']}}"">{{item['first']}} {{item['last']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="orderdate">Order Date</label>
+            <input type="date" class="form-control" id="orderdate" name="orderdate" placeholder="Enter order date">
+        </div>
+        <div class="form-group">
+            <label for="cnum">Credit Card Number</label>
+            <input type="cnum" class="form-control" id="cnum" name="cnum" placeholder="Enter credit card number">
+        </div>
+        <div class="form-group">
+            <label for="ofulfill">Order Fulfilled</label>
+            <input type="number" class="form-control" id="ofulfill" name="ofulfill" placeholder="Enter order fulfilled" min="0" max="1">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <br />
+    </form>
+</div>
 
 {% endblock %}

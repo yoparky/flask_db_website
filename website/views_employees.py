@@ -55,9 +55,6 @@ def delete_employee(id):
 
 @views_employees.route('/edit_employee/<int:id>', methods=["POST", "GET"])
 def edit_employee_id(id):
-    query = "SELECT * FROM Employees WHERE id = '%s';"
-    cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
-    result = cursor.fetchall()
 
     if request.method == "POST":
         # grab input

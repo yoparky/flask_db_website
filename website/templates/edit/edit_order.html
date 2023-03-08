@@ -1,40 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<div id="update">
-    <form method="POST" id="">
-        <legend><strong>Update Order</strong></legend>
-        <fieldset class="fields">
-            <label> ID: </label> X
-            <br></br>
-            <label> customer id </label> <input type="text" name="fname" value="">
-            <!-- <label> employee id </label> <input type="text" name="fname" value=""> -->
-            <br></br>
-            <label for="employeeId"> assigned employee </label>
-            <select name="employeeId" id="eid">
-                <option value="0">None</option>
-                <option value="1">Erling Haaland</option>
-                <option value="2">Harry Kane</option>
-                <option value="3">Darwin Nunez</option>
-            </select>
+{% block title %} Home {% endblock %}
 
-            <br></br>
-            <label> credit card </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> order date </label> <input type="text" name="fname" value="">
-            <br></br>
-            <label> order fulfilled </label> <input type="text" name="fname" value="">
+{% block content %}
 
-            <br></br>
-            <input class="btn" type="submit" id="" value=" Update ">
-            <input class="btn" type="button" value="cancel"  >
+<p><strong>Edit Employee</strong></p>
+
+<table border="1" cellpadding="5"></tableborder>
+    <thead>
+    <tr>
+        <!-- Iterate through each key in the first entry to get the
+        column name -->
+
+        {% for key in orders[0].keys() %}
+
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+    <!-- Now, iterate through every person in bsg_people -->
+    {% for item in orders %}
+    <tr>
+        <!-- Then iterate through every key in the current person dictionary -->
+        {% for key in item.keys() %}
+        <!-- Create a <td> element with the value of that key in it -->
+        <td>{{item[key]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br />
+{% endblock %}
+
+{% block form %}
+
+<!-- Form -->
+<div id="container">
+    <form method="POST" id="new_order">
+        <br />
+        <p><strong>Add Order</strong></p>
+        <div class="form-group">
+          <label for="employee_selection">Select Employee</label>
+          <select name="employee_selection" form="new_order">
+            {% for item in dropdown_employee %}
+              <option value="{{item['id']}}">{{item['first']}} {{item['last']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="customer_selection">Select Customer</label>
+          <select name="customer_selection" form="new_order">
+            {% for item in dropdown_customer %}
+              <option value="{{item['id']}}"">{{item['first']}} {{item['last']}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="orderdate">Order Date</label>
+            <input type="date" class="form-control" id="orderdate" name="orderdate" placeholder="Enter order date">
+        </div>
+        <div class="form-group">
+            <label for="cnum">Credit Card Number</label>
+            <input type="cnum" class="form-control" id="cnum" name="cnum" placeholder="Enter credit card number">
+        </div>
+        <div class="form-group">
+            <label for="ofulfill">Order Fulfilled</label>
+            <input type="number" class="form-control" id="ofulfill" name="ofulfill" placeholder="Enter order fulfilled" min="0" max="1">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <br />
     </form>
-</div><!-- update -->
+</div>
 
-</body>
-</html>
+{% endblock %}
