@@ -16,3 +16,14 @@ def order_items():
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
     return render_template("order_items.html", order_items=result)
+
+
+@views_order_items.route( "/edit_order_item/<int:id>" , methods = [ "GET" , "POST" ] )
+def edit_order_item( id ) :
+
+    pass
+
+@views_order_items.route( "/delete_order_item/<int:id>" , methods = [ "GET" , "POST" ] )
+def delete_order_item( id ) :
+
+    pass

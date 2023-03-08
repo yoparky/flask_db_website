@@ -16,4 +16,19 @@ def actors():
         query = "SELECT * FROM Actors;"
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
-    return render_template("actors.html", actors=result)
+        return render_template("actors.html", actors=result)
+
+    if request.method == "POST" :
+
+        pass
+
+@views_actors.route( "/edit_actor/<int:id>" , methods = [ "GET" , "POST" ] )
+def edit_actor( id ) :
+
+    pass
+
+@views_actors.route( "/delete_actor/<int:id>" , methods = [ "GET" , "POST" ] )
+def delete_actor( id ) :
+
+    pass
+

@@ -16,3 +16,15 @@ def performances():
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
     return render_template("performances.html", performances=result)
+
+
+@views_performances.route('/edit_performance/<int:id>', methods=["POST", "GET"])
+def edit_performance( id ) :
+
+    pass
+
+@views_performances.route('/delete_performance/<int:id>', methods=["POST", "GET"])
+def delete_performance( id ) :
+
+    pass
+

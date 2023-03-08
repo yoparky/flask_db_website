@@ -16,3 +16,16 @@ def movies():
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
     return render_template("movies.html", movies=result)
+
+
+
+@views_movies.route( "/edit_movie/<int:id>" , methods = [ "GET" , "POST" ] )
+def edit_movie( id ) :
+
+    pass
+
+@views_movies.route( "/delete_movie/<int:id>" , methods = [ "GET" , "POST" ] )
+def delete_movie( id ) :
+
+    pass
+
