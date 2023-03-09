@@ -91,4 +91,4 @@ def edit_customer_id(id):
     cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
     result = cursor.fetchall()
     # a potential query2 that populates the dropdown etc.
-    return render_template("edit/edit_customers.html", customers=result)
+    return render_template("edit/edit_customer.html", customers=result)
