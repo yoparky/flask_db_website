@@ -3,7 +3,7 @@ from flask import Blueprint, redirect, render_template, flash, request
 from .database import db_connector as db
 from .database import script
 
-# TODO: Implement off of the views_employee.py file.
+# TODO: Implement off of the views_employee.py file. DONE THIS
 
 views_customers = Blueprint('views_customers', __name__)
 # connect to database

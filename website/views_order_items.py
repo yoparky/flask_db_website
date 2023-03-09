@@ -15,15 +15,51 @@ def order_items():
         query = "SELECT * FROM Order_items;"
         cursor = db.execute_query(db_connection=db_connection, query=query)
         result = cursor.fetchall()
-    return render_template("order_items.html", order_items=result)
+        return render_template("order_items.html", order_items=result)
 
+    if request.method == "POST" :
+
+        order_id = request.form["order_id"]
+        movie_id = request.form["movie_id"]
+
+        quantity = request.form["quantity"]
+
+
+        query = "INSERT INTO Order_items ( order_id , movie_id , quantity ) values ( %s , %s , %s ) ; "
+        query_params = ( order_id , movie_id , quantity )
+        cursor = db.execute_query( db_connection = db_connection , query = query , query_params = query_params )
+        script.flashMessage(crud='create')
+
+        return redirect("/order_items")
 
 @views_order_items.route( "/edit_order_item/<int:id>" , methods = [ "GET" , "POST" ] )
 def edit_order_item( id ) :
 
-    pass
+    if request.method == "GET" :
+
+        query = "SELECT * FROM Order_items WHERE ( order_id , movie_id ) = %s  "
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
+        result = cursor.fetchall()
+        return render_template("edit/edit_order_items.html", order_items=result)
+
+
+    if request.method == "POST" :
+
+        quantity = request.form["quantity"]
+
+        query = "UPDATE Order_items SET quantity = %s WHERE ( order_id , movie_id ) = %s ; "
+        query_params = ( quantity , )
+
+        cursor = db.execute_query(db_connection=db_connection, query=query, query_params=query_params)
+        script.flashMessage(crud='update')
+
+        return redirect('/employees')
 
 @views_order_items.route( "/delete_order_item/<int:id>" , methods = [ "GET" , "POST" ] )
 def delete_order_item( id ) :
+    query = "DELETE FROM Order_items WHERE ( order_id , movie_id  ) = '%s';"
+    db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
+    time.sleep(1)
+    return redirect("/order_items")
 
-    pass
+pass
