@@ -1,31 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<div id="update">
-    <form method="POST" id="">
+{% block title %} Edit Actor {% endblock %}
 
-        <legend><strong>Update Actor</strong></legend>
+{% block content %}
 
-        <fieldset class="fields">
-            <label> ID: </label> X
-            <br></br>
+<p><strong>Edit Actor</strong></p>
 
-            <label> first name </label> <input type="text" >
-            <br></br>
+<table border="1" cellpadding="5"></tableborder>
+    <thead>
+    <tr>
+        <!-- Iterate through each key in the first entry to get the
+        column name -->
 
-            <label> last name </label> <input type="text" >
-            <br></br>
+        {% for key in actors[0].keys() %}
 
-            <input class="btn" type="submit" id="" value=" Update ">
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
 
-            <input class="btn" type="button" value="cancel"  >
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+    <!-- Now, iterate through every person in bsg_people -->
+    {% for person in actors %}
+    <tr>
+        <!-- Then iterate through every key in the current person dictionary -->
+        {% for key in person.keys() %}
+        <!-- Create a <td> element with the value of that key in it -->
+        <td>{{person[key]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br />
+{% endblock %}
+
+{% block form %}
+
+<!-- Form -->
+<div id="container">
+    <form method="POST" id="New_Person">
+        <br />
+        <p><strong>Add Actor</strong></p>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <br />
     </form>
-</div><!-- update -->
+</div>
 
-</body>
-</html>
+{% endblock %}
