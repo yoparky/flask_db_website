@@ -41,44 +41,36 @@
 
 <!-- Form -->
 <div id="container">
-    <form method="POST" id="new_order">
-        <br />
-        <p><strong>Edit Order</strong></p>
-        <div class="form-group">
-          <label for="employee_selection">Select Employee</label>
-          <select name="employee_selection" form="new_order">
-            {% for item in dropdown_employee %}
-              <option value="{{item['id']}}">{{item['first']}} {{item['last']}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br />
-        <div class="form-group">
-          <label for="customer_selection">Select Customer</label>
-          <select name="customer_selection" form="new_order">
-            {% for item in dropdown_customer %}
-              <option value="{{item['id']}}"">{{item['first']}} {{item['last']}}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <br />
-        <div class="form-group">
-            <label for="orderdate">Order Date</label>
-            <input type="date" class="form-control" id="orderdate" name="orderdate" placeholder="Enter order date">
-        </div>
-        <div class="form-group">
-            <label for="cnum">Credit Card Number</label>
-            <input type="cnum" class="form-control" id="cnum" name="cnum" placeholder="Enter credit card number">
-        </div>
-        <div class="form-group">
-            <label for="ofulfill">Order Fulfilled</label>
-            <input type="number" class="form-control" id="ofulfill" name="ofulfill" placeholder="Enter order fulfilled" min="0" max="1">
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <br />
-        <br />
-    </form>
+  <form method="POST" id="new_order_item">
+      <br />
+      <p><strong>Add Order</strong></p>
+      <div class="form-group">
+        <label for="order_selection">Select Order ID</label>
+        <select name="order_selection" form="new_order_item">
+          {% for item in dropdown_order %}
+            <option value="{{item['order_id']}}">{{item['order_id']}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="movie_selection">Select Movie</label>
+        <select name="movie_selection" form="new_order_item">
+          {% for item in dropdown_movie %}
+            <option value="{{item['movie_id']}}"">{{item['title']}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <br />
+      <div class="form-group">
+          <label for="quantity">Enter quantity</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
+      <br />
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <br />
+      <br />
+  </form>
+</div>
 </div>
 
 {% endblock %}
