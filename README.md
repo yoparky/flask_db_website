@@ -7,6 +7,7 @@ This project is a Flask application for Gorak's Galactic Store, a fictional inte
 - **Language:** Python (Flask Framework)
 - **Deployment:** AWS (Amazon Web Services)
 - **Database:** MySQL (hosted on Amazon RDS)
+- **Containerization:** Docker
 
 ## Database Relationships
 The application's database consists of several interrelated entities, designed to support the business operations of Gorak's Galactic Store.
@@ -30,4 +31,4 @@ To access the application:
 - Visit [Gorak's Galactic Store on AWS]().
 - Utilize the user-friendly interface to interact with the database, such as placing orders, managing movies, or viewing actor performances.
 
-For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](parky8_project.pdf).
+For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](CRUD_documentation.pdf).
