@@ -20,7 +20,7 @@ The application's database consists of several interrelated entities, designed t
 - **Movies:** Represents the movies available for sale. Includes details like title, stock, and price.
 - **Performances:** A junction table that resolves the many-to-many relationship between movies and actors.
 - **Actors:** Represents actors featured in the available movies.
-
+![Entities' Relationship](documents/entity_relationship.png)
 ### Database Schema
 The database schema has been designed to handle relationships between these entities effectively. For example, the `Orders` table has foreign keys referencing the `Customers` and `Employees` tables, establishing a direct link between these entities. Similarly, `Order Items` serves as a junction table between `Orders` and `Movies`, capturing the many-to-many relationship.
 
@@ -31,4 +31,4 @@ To access the application:
 - Visit [Gorak's Galactic Store on AWS]().
 - Utilize the user-friendly interface to interact with the database, such as placing orders, managing movies, or viewing actor performances.
 
-For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](CRUD_documentation.pdf).
+For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](documents/CRUD_documentation.pdf).
