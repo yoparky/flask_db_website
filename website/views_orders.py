@@ -93,7 +93,7 @@ def edit_order_id(id):
                 FROM Orders
                    INNER JOIN Customers ON Orders.customer_id = Customers.id
                 INNER JOIN Employees ON Orders.employee_id = Employees.id
-                WHERE Orders.order_id='%s'
+                WHERE Orders.order_id='%s';
             """
     cursor = db.execute_query(db_connection=db_connection, query=query, query_params=(id,))
     result = cursor.fetchall()

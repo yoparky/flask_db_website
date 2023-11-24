@@ -1,3 +1,5 @@
+# Project structure influenced by https://github.com/techwithtim/Flask-Web-App-Tutorial.
+# All other code original.
 from website import create_app
 
 app = create_app()

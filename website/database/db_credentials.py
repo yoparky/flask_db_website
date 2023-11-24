@@ -11,7 +11,13 @@
 # db = 'bsg'
 
 # For OSU Flip Servers
-host = 'classmysql.engr.oregonstate.edu'
-user = 'cs340_parky8'
-passwd = '2188' 
-db = 'cs340_parky8'
+# host = 'classmysql.engr.oregonstate.edu'
+# user = 'cs340_parky8'
+# passwd = '2188' 
+# db = 'cs340_parky8'
+
+# For Amazon RDS
+host = 'osu-project-db.cquzhqqutqv3.us-east-2.rds.amazonaws.com'          # Endpoint provided by Amazon RDS
+user = 'admin'          # Username for RDS instance
+passwd = 'password'        # Password for RDS instance
+db = 'OSU_Project'       # Database name
