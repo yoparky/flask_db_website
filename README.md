@@ -1,4 +1,5 @@
 # Flask App - Gorak's Galactic Store
+[Gorak's Galactic Store on AWS](http://18.227.46.50:5000/)
 
 ## Overview
 This project is a Flask application for Gorak's Galactic Store, a fictional interstellar business model that sells human movies to an alien species. The Flask app has been deployed on AWS and features a fully functional user interface for managing movie orders, customers, and employees.
@@ -20,7 +21,7 @@ The application's database consists of several interrelated entities, designed t
 - **Movies:** Represents the movies available for sale. Includes details like title, stock, and price.
 - **Performances:** A junction table that resolves the many-to-many relationship between movies and actors.
 - **Actors:** Represents actors featured in the available movies.
-
+![Entities' Relationship](documentation/entity_relationship.png)
 ### Database Schema
 The database schema has been designed to handle relationships between these entities effectively. For example, the `Orders` table has foreign keys referencing the `Customers` and `Employees` tables, establishing a direct link between these entities. Similarly, `Order Items` serves as a junction table between `Orders` and `Movies`, capturing the many-to-many relationship.
 
@@ -28,7 +29,7 @@ The database schema has been designed to handle relationships between these enti
 The Flask application is containerized using Docker, ensuring easy deployment and scalability. The Docker container includes all necessary dependencies and can be readily deployed on any platform supporting Docker, including AWS.
 
 To access the application:
-- Visit [Gorak's Galactic Store on AWS]().
+- Visit [Gorak's Galactic Store on AWS](http://18.227.46.50:5000/).
 - Utilize the user-friendly interface to interact with the database, such as placing orders, managing movies, or viewing actor performances.
 
-For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](CRUD_documentation.pdf).
+For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](documentation/CRUD_documentation.pdf).
