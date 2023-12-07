@@ -1,5 +1,4 @@
 # Flask App - Gorak's Galactic Store
-[Gorak's Galactic Store on AWS](http://18.227.46.50:5000/)
 
 ## Overview
 This project is a Flask application for Gorak's Galactic Store, a fictional interstellar business model that sells human movies to an alien species. The Flask app has been deployed on AWS and features a fully functional user interface for managing movie orders, customers, and employees.
