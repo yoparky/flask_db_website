@@ -29,7 +29,7 @@ The database schema has been designed to handle relationships between these enti
 The Flask application is containerized using Docker, ensuring easy deployment and scalability. The Docker container includes all necessary dependencies and can be readily deployed on any platform supporting Docker, including AWS.
 
 To access the application:
-- Visit [Gorak's Galactic Store on AWS](http://18.227.46.50:5000/).
+- Visit [Gorak's Galactic Store on AWS](https://18.116.51.37:5000/).
 - Utilize the user-friendly interface to interact with the database, such as placing orders, managing movies, or viewing actor performances.
 
 For further information on the project, including the detailed API documentation and a guide on how to interact with the web application, please refer to the [CRUD Documentation PDF](documentation/CRUD_documentation.pdf).
